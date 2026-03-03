@@ -1,9 +1,12 @@
-git checkout -b feature-branch
-git add .
-git commit -m "تحديث من فرع الميزة"
+# 🚨 مشروع كاشف الدخان (Smoke Detector)
 
+هذا المشروع يهدف إلى بناء نظام تنبيه ذكي عند حدوث حريق.
 
-git checkout -b feature-branch
+## 💻 تعليمات البرمجة (Git Commands)
+
+لرفع التعديلات، استخدم الأوامر التالية بالترتيب:
+
+```bash
 git add .
-git commit -m "Update from feature branch"
-git push origin feature-branch# SmokeDetector
+git commit -m "تحديث الكود"
+git push origin main
