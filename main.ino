@@ -1,22 +1,20 @@
-// كود كاشف الدخان (Smoke Detector Code)
-int smokePin = A0; // توصيل الحساس بمدخل A0
-int buzzer = 13;   // توصيل جرس الإنذار بمدخل 13
+# 🚨 مشروع كاشف الدخان | Smoke Detector
 
-void setup() {
-  pinMode(smokePin, INPUT);
-  pinMode(buzzer, OUTPUT);
-  Serial.begin(9600); // لبدء مراقبة البيانات على الكمبيوتر
-}
+هذا المشروع يستخدم مستشعر الدخان مع الأردوينو لإطلاق إنذار عند كشف الحريق أو الدخان.
 
-void loop() {
-  int data = analogRead(smokePin); // قراءة نسبة الدخان
-  Serial.print("Smoke Level: ");
-  Serial.println(data);
+### 🛠 الأدوات المستخدمة:
+- **Arduino Uno** (أو أي إصدار آخر).
+- **MQ-2 Smoke Sensor** (حساس الدخان).
+- **Buzzer** (جرس إنذار).
+- **Jumper Wires** (أسلاك توصيل).
 
-  if (data > 400) { // إذا زادت النسبة عن 400 (يمكن تعديلها)
-    digitalWrite(buzzer, HIGH); // تشغيل الإنذار
-  } else {
-    digitalWrite(buzzer, LOW);  // إيقاف الإنذار
-  }
-  delay(500); // انتظر نصف ثانية قبل القراءة التالية
-}
+### 🔌 طريقة التوصيل:
+1. **الحساس (MQ-2):** - VCC -> 5V في الأردوينو.
+   - GND -> GND في الأردوينو.
+   - AO -> A0 (مدخل تناظري).
+2. **الجرس (Buzzer):**
+   - الطرف الموجب -> Pin 13.
+   - الطرف السالب -> GND.
+
+---
+تم البرمجة بواسطة **محمد التركي** 🚀
