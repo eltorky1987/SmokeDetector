@@ -1,20 +1,34 @@
-# 🚨 مشروع كاشف الدخان | Smoke Detector
+/*
+ * مشروع كاشف الدخان الذكي (Smoke Detector)
+ * Hardware: Arduino Uno, MQ-2 Sensor, Buzzer
+ */
 
-هذا المشروع يستخدم مستشعر الدخان مع الأردوينو لإطلاق إنذار عند كشف الحريق أو الدخان.
+// تعريف الأطراف (Pins)
+const int smokeSensorPin = A0;  // طرف الحساس متوصل بـ A0
+const int buzzerPin = 13;       // طرف الجرس متوصل بـ 13
+int sensorThreshold = 400;      // مستوى الحساسية (ممكن تغيره حسب التجربة)
 
-### 🛠 الأدوات المستخدمة:
-- **Arduino Uno** (أو أي إصدار آخر).
-- **MQ-2 Smoke Sensor** (حساس الدخان).
-- **Buzzer** (جرس إنذار).
-- **Jumper Wires** (أسلاك توصيل).
+void setup() {
+  pinMode(buzzerPin, OUTPUT);    // تعيين طرف الجرس كمخرج
+  pinMode(smokeSensorPin, INPUT); // تعيين طرف الحساس كمدخل
+  Serial.begin(9600);            // فتح شاشة المراقبة لمتابعة القراءات
+}
 
-### 🔌 طريقة التوصيل:
-1. **الحساس (MQ-2):** - VCC -> 5V في الأردوينو.
-   - GND -> GND في الأردوينو.
-   - AO -> A0 (مدخل تناظري).
-2. **الجرس (Buzzer):**
-   - الطرف الموجب -> Pin 13.
-   - الطرف السالب -> GND.
+void loop() {
+  int analogSensorValue = analogRead(smokeSensorPin); // قراءة قيمة الحساس
 
----
-تم البرمجة بواسطة **محمد التركي** 🚀
+  Serial.print("Smoke Level: ");
+  Serial.println(analogSensorValue);
+
+  // إذا تجاوزت القراءة الحد المسموح (دخان موجود)
+  if (analogSensorValue > sensorThreshold) {
+    digitalWrite(buzzerPin, HIGH); // تشغيل الجرس
+    delay(100);                    // نغمة متقطعة
+    digitalWrite(buzzerPin, LOW);
+    delay(100);
+  } else {
+    digitalWrite(buzzerPin, LOW);  // إيقاف الجرس في الحالة العادية
+  }
+  
+  delay(500); // انتظر نصف ثانية قبل القراءة التالية
+}
