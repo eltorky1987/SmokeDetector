@@ -1,46 +1,37 @@
-/*
- * مشروع كاشف الدخان الذكي (Smart Smoke Detector)
- * المبرمج: Mahamed Eltorky
- * الوصف: نظام إنذار مبكر يستخدم حساس MQ-2 وجرس تنبيه.
- */
+#include <Wire.h> 
+#include <LiquidCrystal_I2C.h>
 
-// تعريف الأطراف (Pins)
-const int smokeSensorPin = A0;  // طرف الحساس (Analog)
-const int buzzerPin = 13;       // طرف الجرس (Digital)
+LiquidCrystal_I2C lcd(0x27, 16, 2);
 
-// إعدادات الحساسية
-int sensorThreshold = 400;      // القيمة التي يبدأ عندها الإنذار
+const int mq2Pin = A0;
+const int buzzerPin = 8;
+const int threshold = 400;
 
 void setup() {
-  pinMode(buzzerPin, OUTPUT);     // ضبط الجرس كمخرج
-  pinMode(smokeSensorPin, INPUT);  // ضبط الحساس كمدخل
-  
-  Serial.begin(9600);             // بدء الاتصال مع الكمبيوتر (Serial Monitor)
-  Serial.println("--- نظام كاشف الدخان يعمل الآن ---");
+  pinMode(mq2Pin, INPUT);
+  pinMode(buzzerPin, OUTPUT);
+  lcd.init();
+  lcd.backlight();
+  lcd.setCursor(0, 0);
+  lcd.print("System Starting");
+  delay(2000);
+  lcd.clear();
 }
 
 void loop() {
-  // قراءة مستوى الدخان أو الغاز
-  int smokeLevel = analogRead(smokeSensorPin); 
-
-  // طباعة النتائج لمتابعتها
-  Serial.print("Smoke Level: ");
-  Serial.print(smokeLevel);
-
-  // التحقق من وجود خطر
-  if (smokeLevel > sensorThreshold) {
-    Serial.println(" [!!!] خطر: تم كشف دخان!");
-    
-    // نغمة إنذار متقطعة
+  int sensorValue = analogRead(mq2Pin);
+  lcd.setCursor(0, 0);
+  lcd.print("Gas Level: ");
+  lcd.print(sensorValue);
+  lcd.setCursor(0, 1);
+  if (sensorValue > threshold) {
+    lcd.print("Status: DANGER! ");
     digitalWrite(buzzerPin, HIGH);
-    delay(150);
+    delay(200);
     digitalWrite(buzzerPin, LOW);
-    delay(100);
-  } 
-  else {
-    Serial.println(" [OK] الحالة مستقرة");
-    digitalWrite(buzzerPin, LOW); // إيقاف الجرس
+  } else {
+    lcd.print("Status: SAFE    ");
+    digitalWrite(buzzerPin, LOW);
   }
-  
-  delay(500); // تحديث القراءة كل نصف ثانية
+  delay(500);
 }
