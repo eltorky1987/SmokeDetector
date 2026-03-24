@@ -1,4 +1,7 @@
-# 🔥 Smart Smoke Detector System | نظام كاشف الدخان الذكي 🚀
+ # 🔥 النظام الذكي لكشف الدخان | جهاز كاشف الدخان الذكي 🚀
+
+### 📝 الوصف | Description
+
 
 [![Status](https://img.shields.io/badge/Status-Active-brightgreen)]()
 [![Platform](https://img.shields.io/badge/Platform-Arduino-blue)]()
