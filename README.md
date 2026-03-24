@@ -1,46 +1,48 @@
-# 🔥 نظام كشف النقاب الذكي | Smart Smoke Detector 🚀
+# 🔥 Smart Smoke Detector System | نظام كاشف الدخان الذكي 🚀
 
 [![Status](https://img.shields.io/badge/Status-Active-brightgreen)]()
 [![Platform](https://img.shields.io/badge/Platform-Arduino-blue)]()
 [![License](https://img.shields.io/badge/License-MIT-yellow)]()
 
-مشروع نظام إنذار مبكر ذكي يعتمد على تقنيات IoT البسيطة للكشف عن الدخان والغازات الضارة باستخدام حساس MQ-2. تم تصميمه ليكون سهل التنفيذ وفعال في الحماية المنزلية.
+### 📝 Description | الوصف
+An IoT-based smart alert system designed for small environments. It uses the **MQ-2 sensor** to detect smoke and combustible gases, providing real-time alerts.
+
+مشروع نظام إنذار ذكي يعتمد على تقنيات IoT، مصمم للمساحات الصغيرة والشركات. يستخدم مستشعر **MQ-2** للكشف عن الدخان والغازات القابلة للاشتعال مع تنبيهات فورية.
 
 ---
 
-## 🛠️ المكونات المستخدمة (Hardware)
-* **Arduino Uno** (أو أي لوحة متوافقة).
-* **MQ-2 Gas/Smoke Sensor** (حساس الدخان والغاز).
-* **Buzzer** (جرس تنبيه).
-* **Jumper Wires** (أسلاك توصيل).
-
-## 🚀 طريقة التشغيل
-1. قم بتوصيل الحساس بالطرف **A0** والجرس بالطرف **13**.
-2. ارفع الكود الموجود في ملف `main.ino` باستخدام Arduino IDE.
-3. افتح الـ **Serial Monitor** لمراقبة مستويات الدخان في الوقت الفعلي.
-
-## 💻 الكود البرمجي (Code Features)
-* قراءة دقيقة للبيانات التماثلية (Analog Data).
-* نظام تنبيه صوتي متقطع عند الخطر.
-* واجهة مراقبة نصية عبر السيريال.
+### 🛠️ Hardware Components | المكونات المستخدمة
+* **Microcontroller:** Arduino Uno / Nano.
+* **Sensor:** MQ-2 Gas/Smoke Sensor.
+* **Output:** Buzzer & LED Indicator.
+* **Cables:** Jumper wires.
 
 ---
 
-## 🤝 المساهمة (Contributing)
-المشروع مفتوح المصدر! إذا كنت مبرمجاً وترغب في تطوير النظام (مثل إضافة وحدة Wi-Fi لإرسال تنبيهات للموبايل)، يسعدني جداً استقبال "Pull Requests" منك.
+### 🚀 Features | المميزات
+* **Real-time Monitoring:** Constant gas level checks.
+* **High Sensitivity:** Adjustable threshold for different environments.
+* **Visual & Audio Alerts:** Uses LEDs and Buzzers for notification.
+
+* **مراقبة فورية:** فحص مستمر لمستويات الغاز.
+* **حساسية عالية:** إمكانية ضبط مستوى التنبيه حسب البيئة.
+* **تنبيهات مرئية وصوتية:** استخدام LED وطنان (Buzzer) للتنبيه.
 
 ---
 
-## 📬 التواصل (Contact)
-* **GitHub:** [eltorky1987](https://github.com/eltorky1987)
-* **LinkedIn:** [Mahamed Eltorky](https://www.linkedin.com/in/your-profile) 
+### 💻 How to Use | طريقة التشغيل
+1. Connect the hardware as per the circuit diagram.
+2. Open `main.ino` in Arduino IDE.
+3. Upload the code to your board.
+4. Open Serial Monitor to see real-time values.
+
+1. قم بتوصيل المكونات حسب المخطط.
+2. افتح ملف `main.ino` باستخدام برنامج Arduino IDE.
+3. ارفع الكود إلى اللوحة الخاصة بك.
+4. افتح الـ Serial Monitor لمتابعة القراءات مباشرة.
 
 ---
-*تم تطوير هذا المشروع بواسطة **محمد التركي** كجزء من خارطة طريق تعلم الأنظمة المدمجة.*
 
----
-## 🗺️ خارطة الطريق (Future Updates)
-- [ ] إضافة وحدة **ESP8266** للإرسال للموبايل.
-- [ ] إضافة شاشة **LCD 16x2** لعرض نسبة الدخان.
-- [ ] تصميم غطاء (Case) باستخدام الطباعة ثلاثية الأبعاد 3D.
- 
+### 📬 Contact | التواصل
+Created by **Mahamed Eltorky** [GitHub](https://github.com/eltorky1987) | [LinkedIn](https://www.linkedin.com/in/eltorky1987)
+
