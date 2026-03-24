@@ -1,37 +1,20 @@
-#include <Wire.h> 
-#include <LiquidCrystal_I2C.h>
+# 🔥 نظام كاشف الدخان الذكي | Smart Smoke Detector 🚀
 
-LiquidCrystal_I2C lcd(0x27, 16, 2);
+### 📝 الوصف | Description
+مشروع نظام إنذار ذكي يعتمد على تقنيات IoT، مصمم للكشف عن الدخان والغازات باستخدام مستشعر **MQ-2** مع تنبيهات فورية وشاشة عرض.
 
-const int mq2Pin = A0;
-const int buzzerPin = 8;
-const int threshold = 400;
+---
 
-void setup() {
-  pinMode(mq2Pin, INPUT);
-  pinMode(buzzerPin, OUTPUT);
-  lcd.init();
-  lcd.backlight();
-  lcd.setCursor(0, 0);
-  lcd.print("System Starting");
-  delay(2000);
-  lcd.clear();
-}
+### 🛠️ المكونات | Components
+* **Arduino Board** (Uno/Nano)
+* **MQ-2** Gas Sensor
+* **LCD 16x2** (I2C)
+* **Buzzer** & LED
 
-void loop() {
-  int sensorValue = analogRead(mq2Pin);
-  lcd.setCursor(0, 0);
-  lcd.print("Gas Level: ");
-  lcd.print(sensorValue);
-  lcd.setCursor(0, 1);
-  if (sensorValue > threshold) {
-    lcd.print("Status: DANGER! ");
-    digitalWrite(buzzerPin, HIGH);
-    delay(200);
-    digitalWrite(buzzerPin, LOW);
-  } else {
-    lcd.print("Status: SAFE    ");
-    digitalWrite(buzzerPin, LOW);
-  }
-  delay(500);
-}
+---
+
+### 🚀 المميزات | Features
+* عرض نسبة الغاز فورياً على شاشة LCD.
+* إنذار صوتي عند تجاوز الحد المسموح.
+* واجهة برمجية منظمة وسهلة التعديل.
+* 
