@@ -1,51 +1,47 @@
- # 🔥 النظام الذكي لكشف الدخان |
+#include <Wire.h> 
+#include <LiquidCrystal_I2C.h>
 
-### 📝 الوصف | Description
+// إعدادات الشاشة (العنوان غالباً 0x27)
+LiquidCrystal_I2C lcd(0x27, 16, 2);
 
+const int mq2Pin = A0;    // دبوس المستشعر
+const int buzzerPin = 8;  // دبوس الجرس
+const int threshold = 400; // مستوى التنبيه (يمكنك تعديله)
 
-[![Status](https://img.shields.io/badge/Status-Active-brightgreen)]()
-[![Platform](https://img.shields.io/badge/Platform-Arduino-blue)]()
-[![License](https://img.shields.io/badge/License-MIT-yellow)]()
+void setup() {
+  pinMode(mq2Pin, INPUT);
+  pinMode(buzzerPin, OUTPUT);
+  
+  lcd.init();
+  lcd.backlight();
+  
+  // رسالة ترحيب عند التشغيل
+  lcd.setCursor(0, 0);
+  lcd.print("System Starting");
+  lcd.setCursor(0, 1);
+  lcd.print("Smart Smoke Det.");
+  delay(2000);
+  lcd.clear();
+}
 
-### 📝 Description | الوصف
-An IoT-based smart alert system designed for small environments. It uses the **MQ-2 sensor** to detect smoke and combustible gases, providing real-time alerts.
-
-مشروع نظام إنذار ذكي يعتمد على تقنيات IoT، مصمم للمساحات الصغيرة والشركات. يستخدم مستشعر **MQ-2** للكشف عن الدخان والغازات القابلة للاشتعال مع تنبيهات فورية.
-
----
-
-### 🛠️ Hardware Components | المكونات المستخدمة
-* **Microcontroller:** Arduino Uno / Nano.
-* **Sensor:** MQ-2 Gas/Smoke Sensor.
-* **Output:** Buzzer & LED Indicator.
-* **Cables:** Jumper wires.
-
----
-
-### 🚀 Features | المميزات
-* **Real-time Monitoring:** Constant gas level checks.
-* **High Sensitivity:** Adjustable threshold for different environments.
-* **Visual & Audio Alerts:** Uses LEDs and Buzzers for notification.
-
-* **مراقبة فورية:** فحص مستمر لمستويات الغاز.
-* **حساسية عالية:** إمكانية ضبط مستوى التنبيه حسب البيئة.
-* **تنبيهات مرئية وصوتية:** استخدام LED وطنان (Buzzer) للتنبيه.
-
----
-
-### 💻 How to Use | طريقة التشغيل
-1. Connect the hardware as per the circuit diagram.
-2. Open `main.ino` in Arduino IDE.
-3. Upload the code to your board.
-4. Open Serial Monitor to see real-time values.
-
-1. قم بتوصيل المكونات حسب المخطط.
-2. افتح ملف `main.ino` باستخدام برنامج Arduino IDE.
-3. ارفع الكود إلى اللوحة الخاصة بك.
-4. افتح الـ Serial Monitor لمتابعة القراءات مباشرة.
-
----
-
-### 📬 Contact | التواصل
-Created by **Mahamed Eltorky** [GitHub](https://github.com/eltorky1987) | [LinkedIn](https://www.linkedin.com/in/eltorky1987)
-
+void loop() {
+  int sensorValue = analogRead(mq2Pin);
+  
+  // عرض القيمة على الشاشة
+  lcd.setCursor(0, 0);
+  lcd.print("Gas Level: ");
+  lcd.print(sensorValue);
+  
+  lcd.setCursor(0, 1);
+  if (sensorValue > threshold) {
+    lcd.print("Status: DANGER! ");
+    digitalWrite(buzzerPin, HIGH); // تشغيل الإنذار
+    delay(200);
+    digitalWrite(buzzerPin, LOW);
+  } else {
+    lcd.print("Status: SAFE    ");
+    digitalWrite(buzzerPin, LOW); // إيقاف الإنذار
+  }
+  
+  delay(500); // تحديث كل نصف ثانية
+}
