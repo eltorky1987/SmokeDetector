@@ -7,6 +7,6 @@ void setup() {
 
 void loop() {
   int value = analogRead(sensorPin);
-  Serial.println(value); // بيبعت القراءة للبايثون
+  Serial.println(value); 
   delay(1000);
 }
