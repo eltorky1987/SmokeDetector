@@ -1,35 +1,12 @@
-#include <Wire.h> 
-#include <LiquidCrystal_I2C.h>
-
-LiquidCrystal_I2C lcd(0x27, 16, 2);
-
-const int smokePin = A0; 
-const int buzzerPin = 9; 
-const int threshold = 400; 
+// 🌹 كود الأردوينو للحساس MQ-2
+int sensorPin = A0; 
 
 void setup() {
-  pinMode(smokePin, INPUT);
-  pinMode(buzzerPin, OUTPUT);
-  lcd.init();
-  lcd.backlight();
-  lcd.setCursor(0, 0);
-  lcd.print("System Active");
+  Serial.begin(9600);
 }
 
 void loop() {
-  int sensorValue = analogRead(smokePin);
-  lcd.setCursor(0, 0);
-  lcd.print("Value: ");
-  lcd.print(sensorValue);
-
-  if (sensorValue > threshold) {
-    digitalWrite(buzzerPin, HIGH);
-    lcd.setCursor(0, 1);
-    lcd.print("!!! DANGER !!!");
-  } else {
-    digitalWrite(buzzerPin, LOW);
-    lcd.setCursor(0, 1);
-    lcd.print("Status: Safe  ");
-  }
-  delay(500);
+  int value = analogRead(sensorPin);
+  Serial.println(value); // بيبعت القراءة للبايثون
+  delay(1000);
 }
