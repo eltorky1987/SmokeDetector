@@ -1,28 +1,40 @@
-<p align="center">
-  <img src="https://img.shields.io/badge/IoT-Project-blueviolet?style=for-the-badge&logo=arduino" />
-  <img src="https://img.shields.io/badge/Language-C++-00599C?style=for-the-badge&logo=c%2B%2B" />
-  <img src="https://img.shields.io/badge/Display-LCD_I2C-ff69b4?style=for-the-badge" />
-</p>
+# 🔥 Smart Smoke Detector | نظام كاشف الدخان الذكي 🚀  
+
+## 📖 الوصف | Description  
+مشروع إنذار ذكي يعتمد على تقنيات **IoT** للكشف عن الدخان والغازات باستخدام مستشعر **MQ-2**، مع تنبيهات فورية وشاشة عرض **LCD I2C**.  
+يهدف المشروع إلى تعزيز السلامة المنزلية والمكتبية عبر نظام إنذار بسيط وفعال.  
 
 ---
 
-#🔥 نظام كاشف الدخان الذكي | Smart Smoke  Detector 🚀
-
-### 📝 الوصف | Description
-مشروع نظام إنذار ذكي يعتمد على تقنيات IoT، مصمم للكشف عن الدخان والغازات باستخدام مستشعر **MQ-2** مع تنبيهات فورية وشاشة عرض.
-
----
-
-### 🛠️ المكونات | Components
-* **Arduino Board** (Uno/Nano)
-* **MQ-2** Gas Sensor
-* **LCD 16x2** (I2C)
-* **Buzzer** & LED
+## 🛠️ المكونات | Components  
+- Arduino Board (Uno/Nano)  
+- MQ-2 Gas Sensor  
+- LCD I2C Display  
+- Buzzer للتنبيه الصوتي  
+- أسلاك توصيل + Breadboard  
 
 ---
 
-### 🚀 المميزات | Features
-* عرض نسبة الغاز فورياً على شاشة LCD.
-* إنذار صوتي عند تجاوز الحد المسموح.
-* واجهة برمجية منظمة وسهلة التعديل.
-* 
+## 💻 الملفات | Files  
+- `main.ino` → كود Arduino للتحكم بالمستشعرات والعرض.  
+- `smoke_detector.py` → سكربت Python للتكامل مع أنظمة خارجية أو تحليل البيانات.  
+
+---
+
+## ⚙️ طريقة التشغيل | How to Run  
+1. وصل المستشعرات بالـ Arduino حسب المخطط.  
+2. ارفع كود `main.ino` باستخدام Arduino IDE.  
+3. شغل سكربت `smoke_detector.py` إذا كنت عايز تكامل مع الكمبيوتر أو السحابة.  
+4. عند الكشف عن دخان/غاز، سيظهر تنبيه على الشاشة مع صوت إنذار.  
+
+---
+
+## 📡 التوسع المستقبلي | Future Expansion  
+- ربط النظام مع **ESP8266/ESP32** لإرسال إشعارات عبر الإنترنت.  
+- إضافة دعم لتطبيقات الهاتف المحمول.  
+- تحسين دقة الكشف عبر معايرة المستشعر.  
+
+---
+
+## 📜 الترخيص | License  
+MIT License – مفتوح المصدر للاستخدام والتطوير.
