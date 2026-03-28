@@ -64,3 +64,4 @@
 
 ## 📜 الترخيص | License  
 MIT License – مفتوح المصدر للاستخدام والتطوير.
+Add WiFi connectivity using ESP8266
