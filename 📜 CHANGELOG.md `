@@ -1,0 +1,4 @@
+## [2026-03-28] - Add WiFi Connectivity
+- Integrated ESP8266 WiFi module with Arduino Uno.
+- Added basic code to connect to local Wi-Fi network.
+- Prepared structure for sending alerts via HTTP/MQTT
