@@ -2,3 +2,7 @@
 - Integrated ESP8266 WiFi module with Arduino Uno.
 - Added basic code to connect to local Wi-Fi network.
 - Prepared structure for sending alerts via HTTP/MQTT
+## [2026-03-28] - Add HTTP Alert
+- Added basic HTTP request to send alert when smoke is detected.
+- Integrated with ESP8266 WiFi connection.
+- Prepared structure for future Cloudflare/Firebase integration.
