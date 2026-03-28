@@ -64,4 +64,6 @@
 
 ## 📜 الترخيص | License  
 MIT License – مفتوح المصدر للاستخدام والتطوير.
-Add WiFi connectivity using ESP8266
+
+Added basic code to connect to Wi-Fi.
+Prepared structure for sending alerts via HTTP.
